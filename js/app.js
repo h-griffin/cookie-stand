@@ -93,7 +93,24 @@ store1.saleTracker();
 store1.status();
 store1.write();
 
+//pokemon demo
+function writeTable() {
+    var tableEl = document.getElementById('table');
+    //loop to traverse data storage
+    for (var pokemon = 0; pokemon < pokedex.length; pokemon++);
+    var row = document.createElement('tr')
 
+    var nameCell = document.createElement('td');
+    nameCell.textContent = pokedex[pokemon].name;
+    
+    var attCell = document.createElement('td')
+    nameCell.textContent = pokedex[pokemon].name;
+
+    var defCell = document.createElement('td')
+    nameCell.textContent = pokedex[pokemon].name;
+    row.appendChild(cell);
+    tableEl.ELEMENT_NODE.appendChild(row);
+}
 // var store2 = {
 //     name: 'Tokyo',
 //     minCustomer: 3,
