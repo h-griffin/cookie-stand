@@ -1,53 +1,98 @@
-// var seattle = [minCookie, maxCookie, avgCookie];
+'use strict';
+var allStores = [];
 
 var store1 = {
     name: 'Seattle' ,
     minCustomer: 23 ,
     maxCustomer: 65 ,
     avgCookie: 6.3 ,
-    // generateCustomers: randomNumber,
-    hourOpenPerDay: 14 ,
+    // hourOpenPerDay: 14 ,
+    hours = ['8am', '9am', '10am'] ,
+    totalCookies: [] ,
+    totalCustomer: [] ,
+    cookieSum = 0 ,
 
     randomHourNumber: function() {  
-        //max - min
-        //math rondom times difference plus min
-        // var difference = (this.maxCustomer - this.minCustomer)
-        // var customers = (this.maxCustomer - this.minCustomer);
-        // var  = (Math.random() * customers + 1) + this.minCustomer;
-        // differenceTimesFloor =  Math.floor(differenceTimes);
-        // console.log(differenceTimesFloor);
-
-        customerPerHour = Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1) + this.minCustomer);
+        //round down / random 0-1 / max-min range / +min to ensure it meets lowest value
+        var customerPerHour = Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1) + this.minCustomer);
         console.log(customerPerHour);
-        cookiePerHour = Math.floor(customerPerHour * this.avgCookie);
+        var cookiePerHour = Math.floor(customerPerHour * this.avgCookie);
         console.log(cookiePerHour);
+
+        //array
         var cookiesAndCustomerPerHour = [customerPerHour, cookiePerHour];
         console.log(cookiesAndCustomerPerHour);
 
         return cookiesAndCustomerPerHour
     },
 
+    // average and total customers & cookies per hour open
     saleTracker: function(){ 
-        var totalCookieIt = 0;
-        var totalcookie = [];
-        var totalCustomerIt = 0;
-        var totalCustomer = [];
+        // var cookieSum = 0;
+        // var totalcookie = [];
+        // var totalCustomerIt = 0;
+        // var totalCustomer = [];
 
 
-        for (var i = 0; i < this.hourOpenPerDay; i++){
+        for (var i = 0; i < this.hours.length; i++){
                 var cookiesAndCustomerPerHour = this.randomHourNumber();
-                totalCustomer.push(cookiesAndCustomerPerHour[0]);
-                totalCustomerIt = totalCustomerIt + cookiesAndCustomerPerHour[0];
-                totalcookie.push(cookiesAndCustomerPerHour[1]);
-                totalCookieIt = (totalCookieIt + cookiesAndCustomerPerHour[1]);
+            
+                //do we need to track this?
+                // this.totalCustomer.push(cookiesAndCustomerPerHour[0]);
+                // totalCustomerIt = totalCustomerIt + cookiesAndCustomerPerHour[0];
 
+                //add to array
+                this.totalcookie.push(cookiesAndCustomerPerHour[1]);
+                cookieSum = (cookieSum + cookiesAndCustomerPerHour[1]);
             }
 
             // customerVar = Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1) + this.minCustomer); 
 
-    }  
+    } , 
+    status: function () {
+        console.log(this.totalCookies, this.totalCustomer);
+    } ,
+    //write all cookie data to DOM
+    write: function() {
+        //parent / where is this element going in HTML? 
+        var listEl= document.getElementById('list');
+
+        //child / create another element to append(add/attatch) to listEl
+        var itemEl = document.createElement('li');
+        
+        //display
+        //city name / cookie value per hour in total Cookies / sum of all cookies
+        
+        //city name
+        var nameEl = document.createElement('p');
+        nameEl.textContent = this.name;
+        itemEl.appendChild(nameEl);
+        listEl.appendChild(listEl);
+
+        //
+        var salesList = document.createElement('ul');
+        salesList.appendChild(salesList);
+
+        //cookie value per hour in totalCookies
+        for (var i = 0; i < this.totalCookies.length; i++){
+            var hourEl = document.createElement('li');
+        
+            hourEl.textContent = this.totalCookies[i];
+            hourEl.appendChild(hourEl);
+            listEl.appendChild(salesList);
+        }
+        //sum of all cookies
+        // create and append a new the bottom of sales list
+        var sumEl = document.createElement('li');
+        sumEl.textContent = 'total : ' + this.cookieSum;
+        salesList.appendChild(sumEl);
+    }
 }
+allStores.push(store1); 
 store1.saleTracker();
+store1.status();
+store1.write();
+
 
 // var store2 = {
 //     name: 'Tokyo',
