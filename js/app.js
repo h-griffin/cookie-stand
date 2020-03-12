@@ -77,6 +77,22 @@ function Store(name, minCustomer, maxCustomer, avgCookie){
     this.avgCookie = avgCookie;
     this.totalCookies = [] ;
     this.cookieSum = 0 ;
+    var hours = [
+    '6am',
+    '7am',
+    '8am',
+    '9am',
+    '10am',
+    '11am',
+    '12pm', 
+    '1pm',
+    '2pm',
+    '3pm',
+    '4pm',
+    '5pm',
+    '6pm',
+    '7pm'];
+
     this.generate = function() {
         var array = randomHourNumber(this.minCustomer, this.maxCustomer, this.avgCookie);
         this.totalCookies = array[0];
@@ -92,23 +108,6 @@ var parisLocation = new Store('paris', 20, 38, 3.7);
 var limaLocation = new Store('lima', 2, 16, 4.6);
 
 var locations = [seattleLocation, tokyoLocation, dubaiLocation, parisLocation, limaLocation];
-
-
-var hours = [
-    '6am',
-    '7am',
-    '8am',
-    '9am',
-    '10am',
-    '11am',
-    '12pm', 
-    '1pm',
-    '2pm',
-    '3pm',
-    '4pm',
-    '5pm',
-    '6pm',
-    '7pm'];
 
 function randomHourNumber(min, max, avg) { 
     var sum = 0;
