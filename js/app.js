@@ -220,3 +220,33 @@ writeBottomRow();
 
 var locations = [seattleLocation, tokyoLocation, dubaiLocation, parisLocation, limaLocation];
 
+var formEl = document.getElementById('cookie-form');
+
+function handleForm(formInput) {
+    var location = formInput.target.location.value;
+    var minCustomer = Number(formInput.target.minCustomer.value);
+    var maxCustomer = Number(formInput.target.maxCustomer.value);
+    var avgCustomer = Number(formInput.target.avgCustomer.value);
+
+    new Store(location, minCustomer, maxCustomer, avgCustomer);
+    console.log(allCookieStores);
+    renderTable();
+}
+
+formEl.addEventListener('submit', handleForm);
+
+new Store('Seattle', 3, 7, 5);
+new Store('Lima', 5, 10, 2.4);
+new Store('Tokyo', 2, 16, 8.4);
+new Store('London', 7, 9, 6.4);
+
+function renderTable(){
+    var table = document.getElementById('table');
+    table.innerHTML = null;
+
+    for(var store = 0; store < allCookieStores.length; store++){
+        allCookieStores[store].writeRow();
+    }
+    writeBottomRow();
+}
+renderTable();
