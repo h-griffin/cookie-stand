@@ -116,7 +116,7 @@ function writeHeader(){
     headerEl.appendChild(headerRow);
 }
 
-writeHeader();
+// writeHeader();
 
 var seattleLocation = new Store('Seattle', 23, 65, 6.3); 
 var tokyoLocation = new Store('Tokyo', 3, 24, 1.2); 
@@ -124,14 +124,15 @@ var dubaiLocation = new Store('Dubai', 11, 38, 3.7);
 var parisLocation = new Store('Paris', 20, 38, 2.3);
 var limaLocation = new Store('Lima', 2, 16, 4.6);
 
-writeBottomRow();
+// writeBottomRow();
 
 
 var locations = [seattleLocation, tokyoLocation, dubaiLocation, parisLocation, limaLocation];
 
 var formEl = document.getElementById('cookie-form');
 
-function handleForm(formInput) {
+function formHandle(formInput) {
+    formInput.preventDefault();
     var location = formInput.target.location.value;
     var minCustomer = Number(formInput.target.minCustomer.value);
     var maxCustomer = Number(formInput.target.maxCustomer.value);
@@ -142,20 +143,17 @@ function handleForm(formInput) {
     renderTable();
 }
 
-formEl.addEventListener('submit', handleForm);
-
-new Store('Seattle', 3, 7, 5);
-new Store('Lima', 5, 10, 2.4);
-new Store('Tokyo', 2, 16, 8.4);
-new Store('London', 7, 9, 6.4);
+formEl.addEventListener('submit', formHandle);
 
 function renderTable(){
     var table = document.getElementById('table');
     table.innerHTML = null;
 
+    writeHeader();
     for(var store = 0; store < allCookieStores.length; store++){
         allCookieStores[store].writeRow();
     }
     writeBottomRow();
 }
+
 renderTable();
