@@ -101,28 +101,24 @@ function Store(name, minCustomer, maxCustomer, avgCookie){
     this.maxCustomer = maxCustomer;
     this.avgCookieSalesPerCustomer = avgCookie;
     this.hoursOpen = hours;
-    this.totalCookies = [] ;
+    this.totalCookies = this.randomHourNumber(); ;
     allCookieStores.push(this);
-
-    this.randomHourNumber();
+    this.writeRow();
 }
     
 
 Store.prototype.randomHourNumber = function() { 
-    this.totalCookies = [];
+    var cookieData = [];
 
     for (var hours = 0; hours < this.hoursOpen; hours++){
      //round down / random 0-1 / max-min range / +min to ensure it meets lowest value
 
         var customerPerHour = Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1) + this.minCustomer);
-        console.log(customerPerHour);
 
         var cookiePerHour = Math.floor(customerPerHour * this.avgCookieSalesPerCustomer);
-        console.log(cookiePerHour)
-        cookiePerHour.push(cookiePerHour);   
+        cookieData.push(cookiePerHour);   
     }
-    console.log(this.totalCookies);
-
+    return cookieData;
 }
 
 Store.prototype.writeRow = function(){
@@ -134,11 +130,11 @@ Store.prototype.writeRow = function(){
     cell.textContent = this.name;
     row.appendChild(cell);
 
-    for (var hour = 0; hour < this.cookiePerHour.length; hour++) {
+    for (var hour = 0; hour < this.hoursOpen; hour++) {
         cell = document.createElement('td');
-        cell.textContent = this.cookiePerHour[hour];
+        cell.textContent = this.totalCookies[hour];
         row.appendChild(cell);
-        cookieSum = this.cookiePerHour[hour];
+        cookieSum = cookieSum + this.totalCookies[1];
     }
     cell = document.createElement('td');
     cell.textContent = cookieSum;
