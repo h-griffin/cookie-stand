@@ -3,6 +3,57 @@ body{
 }
 
 table, td {
-    border: thin solid blue;
+    border: thin solid grey;
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+    font-family: monospace;
+    background-color: lightgray;
+}
 
+header{
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  nav li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: lightgray;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    width: 25%;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+  li a:hover {
+    background-color: #111;
+  }
+  .active {
+    background-color: #4CAF50;
+  }
+
+h2{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: darkslategrey
+}  
+
+p{
+    font-size: x-large;
+}
+
+div .leftPictures{
+    width: 200px;
+    float: left;
 }
