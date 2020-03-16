@@ -49,11 +49,25 @@ h2{
     color: darkslategrey
 }  
 
-p{
+p {
     font-size: x-large;
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+}
+
+div.contacts {
+    font-size: x-small;
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+    font-family: monospace;
 }
 
 div .leftPictures{
     width: 200px;
+    float: left;
+}
+
+img .cartoon{
+    width: 50px;
     float: left;
 }
